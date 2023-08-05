@@ -1,0 +1,10 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: GLIMS_20230716/introglims
+chapters:
+- file: GLIMS_20230716/observe
+- file: GLIMS_20230716/organize
+- file: GLIMS_20230716/univariate
+- file: GLIMS_20230716/bivariate
