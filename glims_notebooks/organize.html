@@ -1,0 +1,977 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Organize Variables &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'glims_notebooks/organize';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Observe Datasets" href="observe.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="introglims.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="introglims.html">
+                    Introduction: GLIMS EDA
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="observe.html">Observe Datasets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Organize Variables</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fglims_notebooks/organize.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/glims_notebooks/organize.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Organize Variables</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-non-glacier-columns">Remove Non-Glacier Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-non-glacier-rows">Remove Non-Glacier Rows</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="organize-variables">
+<h1>Organize Variables<a class="headerlink" href="#organize-variables" title="Permalink to this heading">#</a></h1>
+<p><em>Examine and modify datatypes - categorical, continuous, discrete. Organize dataset.</em></p>
+<p>Polygons has most of the data and will serve as the focus of this EDA.</p>
+<section id="remove-non-glacier-columns">
+<h2>Remove Non-Glacier Columns<a class="headerlink" href="#remove-non-glacier-columns" title="Permalink to this heading">#</a></h2>
+<p>Since the purpose is to find data stories about glaciers rather than the glacier research process, variables pertaining data submission and measurement uncertainty are identified, referencing the <a class="reference external" href="https://nsidc.org/sites/default/files/nsidc-0272-v001-userguide_1.pdf">User Guide</a> and the <a class="reference external" href="http://www.glims.org/MapsAndDocs/downloaded_field_desc.html">GLIMS Description of fields</a>, verified, and removed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Check working directory</span>
+<span class="n">current_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current Directory:&quot;</span><span class="p">,</span> <span class="n">current_directory</span><span class="p">)</span>
+
+<span class="c1"># Ask pandas to display all columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current Directory: /Users/yun/Documents/GLIMS/glims_notebooks
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Esri shapefiles as geopandas dataframes</span>
+<span class="n">polygons</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;GLIMS_20230716/glims_download_13173/glims_polygons.shp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygons</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>line_type       object
+anlys_id       float64
+glac_id         object
+anlys_time      object
+area           float64
+db_area        float64
+width          float64
+length         float64
+primeclass     float64
+min_elev       float64
+mean_elev      float64
+max_elev       float64
+src_date        object
+rec_status      object
+glac_name       object
+wgms_id         object
+local_id        object
+glac_stat       object
+subm_id        float64
+release_dt      object
+proc_desc       object
+rc_id          float64
+geog_area       object
+chief_affl      object
+loc_unc_x        int64
+loc_unc_y        int64
+glob_unc_x       int64
+glob_unc_y       int64
+submitters      object
+analysts        object
+geometry      geometry
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># all are &quot;okay&quot;, as expected from documentation</span>
+<span class="n">polygons</span><span class="o">.</span><span class="n">rec_status</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">polygons</span><span class="o">.</span><span class="n">proc_desc</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>165
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lots of &quot;None&quot;</span>
+<span class="n">polygons</span><span class="o">.</span><span class="n">wgms_id</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 91% &quot;None&quot;</span>
+<span class="n">polygons</span><span class="o">.</span><span class="n">local_id</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 65% &quot;None&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None                        0.649243
+GR50.11096E32.29309N_Zr2    0.000173
+GIJR115                     0.000133
+NPI-22                      0.000115
+NPI-39                      0.000115
+                              ...   
+08EC232531E55523N           0.000002
+08AC223282E59430N           0.000002
+08EA232117E57081N           0.000002
+08MG236598E50776N           0.000002
+3266                        0.000002
+Name: local_id, Length: 69166, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some of these fields may be related to each other: proc_desc and analysts; submitters, rc_id, geog_area, and chief_affl</span>
+<span class="n">polygons</span><span class="p">[[</span>
+    <span class="c1">#&#39;line_type&#39;, #&#39;rec_status&#39;, #&#39;glac_stat&#39;, </span>
+    <span class="c1">#&#39;area&#39;, &#39;db_area&#39;,&#39;width&#39;, &#39;length&#39;, &#39;primeclass&#39;, &#39;min_elev&#39;, &#39;mean_elev&#39;, &#39;max_elev&#39;,</span>
+    <span class="s1">&#39;anlys_id&#39;</span><span class="p">,</span> <span class="s1">&#39;glac_id&#39;</span><span class="p">,</span> <span class="s1">&#39;glac_name&#39;</span><span class="p">,</span> <span class="s1">&#39;wgms_id&#39;</span><span class="p">,</span> <span class="s1">&#39;local_id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;anlys_time&#39;</span><span class="p">,</span> <span class="s1">&#39;src_date&#39;</span><span class="p">,</span> <span class="s1">&#39;subm_id&#39;</span><span class="p">,</span> <span class="s1">&#39;release_dt&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;proc_desc&#39;</span><span class="p">,</span> <span class="s1">&#39;rc_id&#39;</span><span class="p">,</span> <span class="s1">&#39;geog_area&#39;</span><span class="p">,</span><span class="s1">&#39;chief_affl&#39;</span><span class="p">,</span> <span class="s1">&#39;submitters&#39;</span><span class="p">,</span> <span class="s1">&#39;analysts&#39;</span><span class="p">,</span> 
+    <span class="c1">#&#39;loc_unc_x&#39;, &#39;loc_unc_y&#39;, &#39;glob_unc_x&#39;, &#39;glob_unc_y&#39;, #&#39;geometry&#39;</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anlys_id      557884
+glac_id       328115
+local_id       69166
+glac_name      35112
+wgms_id        17239
+src_date        1178
+subm_id          624
+anlys_time       456
+release_dt       278
+proc_desc        165
+analysts         109
+submitters        67
+rc_id             53
+geog_area         49
+chief_affl        46
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alignments with higher value counts</span>
+<span class="n">polygons</span><span class="p">[[</span>
+    <span class="s1">&#39;proc_desc&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;rc_id&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;geog_area&#39;</span><span class="p">,</span> <span class="c1"># &#39;umbrella&#39; and &#39;various&#39; categories too large to be useful</span>
+    <span class="s1">&#39;chief_affl&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;submitters&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;analysts&#39;</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>proc_desc                                                                                                                                                                                                                                                       rc_id  geog_area                                                               chief_affl                                                         submitters                        analysts                                                                                                                                         
+Semi-automated glacier classification; Semi-automated mapping from optical imagery, with manual editing.                                                                                                                                                        36.0   Asia                                                                    Nagoya University                                                  Sakai, Akiko                      Sakai, Akiko                                                                                                                                         133414
+Semi-automated glacier classification.; From Randolph Glacier Inventory Version 5.0. See http://www.glims.org/RGI/. Multispectral classification followed by manual correct for blunders and debris. Metadata was added at NSIDC.                               761.0  Randolph Glacier Inventory; Umbrella RC for merging the RGI into GLIMS  University of Colorado                                             Cogley, Graham                    Bolch, Tobias; Cogley, Graham; Frey, Holger; Guo, Wanqing; Liu, Shiyin; Moelg, Nico; Nuimura, Takayuki; Paul, Frank; Raup, Bruce H.; Sakai, Akiko     54397
+Semi-automated glacier classification.;                                                                                                                                                                                                                         8.0    China                                                                   Chinese Academy of Sciences                                        Liu, Shiyin                       Guo, Wanqin; Liu, Shiyin                                                                                                                              48569
+Object-based semi-automated glacier classification. See http://lib.icimod.org/record/29591; The glacier inventory was developed based on remote sensing tools and techniques, using semi-automatic multi-resolution segmentation of Landsat satellite images a  12.0   Himalaya (India, Nepal, Bhutan)                                         International Centre for Integrated Mountain Development (ICIMOD)  Bajracharya, Samjwal              Bajracharya, Samjwal; Guo, Wanqin; Maharjan, SB; Shrestha, Finu                                                                                       38201
+Semi-automated glacier classification.; From Randolph Glacier Inventory Version 5.0. See http://www.glims.org/RGI/. Multispectral classification followed by manual correct for blunders and debris. Metadata was added at NSIDC.                               761.0  Randolph Glacier Inventory; Umbrella RC for merging the RGI into GLIMS  University of Colorado                                             Cogley, Graham                    Bolch, Tobias; Cogley, Graham; Frey, Holger; Guo, Wanqing; Liu, Shiyin; Nuimura, Takayuki; Paul, Frank; Raup, Bruce H.; Sakai, Akiko                  27861
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ...  
+Manual digitization with the aid of USGS topographic maps to define flow boundaries.; Manual digitization from imagery with assistance to outline flow divides from USGS topographic maps.  Each outlined glacier encompasses all ice that contributes to a co  602.0  Various (NSIDC)                                                         University of Colorado                                             Beedle, Matthew                   Beedle, Matthew                                                                                                                                           1
+Manual glacier classification.; Manual glacier mapping from LIMA imagery                                                                                                                                                                                        15.0   West Antarctica                                                         Tongji University                                                  HAI, Gang                         HAI, Gang; LI, Rongxing; Tian, Yixiang; Xie, Huan                                                                                                         1
+Advanced atmospheric and topographic correction of S2A scenes, automated pre-classification of glacier areas, manual correction of minor misclassifications and in debris covered areas; Correction of outline for this one glacier.                            34.0   Austrian Alps                                                           Universitaet Innsbruck                                             Schwaizer (nee Bippus), Gabriele  Nemec, Johanna; Schwaizer (nee Bippus), Gabriele                                                                                                          1
+Manual Digitization; manual digitization using GLIMSView of the Landsat 7 image.                                                                                                                                                                                602.0  Various (NSIDC)                                                         University of Colorado                                             Beedle, Matthew                   Beedle, Matthew                                                                                                                                           1
+; 1. ASTER L1B data acquisition LP DAAC; 2. Orthorectification subsystem VNIR with SRTM90 data; 3. Co registration with Landsat TM data from GLCF University of Maryland; 4. On screen manual digitization; 5. Surface area, length, widht measurements; 6. Sn  20.0   Chilean glaciers, between -18 and -56 degrees latitude                  Universidad de Chile                                               Zenteno, Pablo                    Zenteno, Pablo                                                                                                                                            1
+Length: 191, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Continuous Temporal, not defined in documentation, data release?</span>
+<span class="n">polygons</span><span class="o">.</span><span class="n">release_dt</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0d53dcf63208db081d12e4cff79084e321805e3f2614a9199f3a8bb88ab09d9d.png" src="../_images/0d53dcf63208db081d12e4cff79084e321805e3f2614a9199f3a8bb88ab09d9d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Positional Uncertainty, Discrete</span>
+<span class="n">polygons</span><span class="p">[[</span><span class="s1">&#39;loc_unc_x&#39;</span><span class="p">,</span> <span class="s1">&#39;loc_unc_y&#39;</span><span class="p">,</span> <span class="s1">&#39;glob_unc_x&#39;</span><span class="p">,</span> <span class="s1">&#39;glob_unc_y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04c72c6989a0909a044f35e8ccd64cf8a19af3e29d30c8731471c03fc1a39460.png" src="../_images/04c72c6989a0909a044f35e8ccd64cf8a19af3e29d30c8731471c03fc1a39460.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove submission-related columns</span>
+<span class="n">polygons1</span> <span class="o">=</span> <span class="n">polygons</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;rec_status&#39;</span><span class="p">,</span> <span class="s1">&#39;wgms_id&#39;</span><span class="p">,</span> <span class="s1">&#39;local_id&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;subm_id&#39;</span><span class="p">,</span> <span class="s1">&#39;release_dt&#39;</span><span class="p">,</span> <span class="s1">&#39;proc_desc&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;rc_id&#39;</span><span class="p">,</span> <span class="s1">&#39;geog_area&#39;</span><span class="p">,</span> <span class="s1">&#39;chief_affl&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;loc_unc_x&#39;</span><span class="p">,</span> <span class="s1">&#39;loc_unc_y&#39;</span><span class="p">,</span> <span class="s1">&#39;glob_unc_x&#39;</span><span class="p">,</span> <span class="s1">&#39;glob_unc_y&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;submitters&#39;</span><span class="p">,</span> <span class="s1">&#39;analysts&#39;</span>
+<span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygons1</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>line_type       object
+anlys_id       float64
+glac_id         object
+anlys_time      object
+area           float64
+db_area        float64
+width          float64
+length         float64
+primeclass     float64
+min_elev       float64
+mean_elev      float64
+max_elev       float64
+src_date        object
+glac_name       object
+glac_stat       object
+geometry      geometry
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="remove-non-glacier-rows">
+<h2>Remove Non-Glacier Rows<a class="headerlink" href="#remove-non-glacier-rows" title="Permalink to this heading">#</a></h2>
+<p>Remove polygon features representing non-glacier boundaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Most entities are glacier boundaries.</span>
+<span class="n">polygons1</span><span class="o">.</span><span class="n">line_type</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>glac_bound     564112
+debris_cov       1005
+intrnl_rock       452
+pro_lake          291
+supra_lake         18
+basin_bound         9
+Name: line_type, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove non-glacier entities.</span>
+<span class="n">polygons2</span> <span class="o">=</span> <span class="n">polygons1</span><span class="p">[</span><span class="n">polygons1</span><span class="o">.</span><span class="n">line_type</span><span class="o">==</span><span class="s2">&quot;glac_bound&quot;</span><span class="p">]</span>
+<span class="c1">#polygons2.line_type.value_counts()</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;line_type&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/13/hf_sfnls1lq6kn8vsc92q40h0000gn/T/ipykernel_37446/1093122923.py:4: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  polygons2.drop(&#39;line_type&#39;, axis=1, inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygons2</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anlys_id       float64
+glac_id         object
+anlys_time      object
+area           float64
+db_area        float64
+width          float64
+length         float64
+primeclass     float64
+min_elev       float64
+mean_elev      float64
+max_elev       float64
+src_date        object
+glac_name       object
+glac_stat       object
+geometry      geometry
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Minimal NAN&#39;s address later</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anlys_id       0
+glac_id        0
+anlys_time     0
+area           0
+db_area        0
+width          0
+length         0
+primeclass     0
+min_elev       0
+mean_elev      0
+max_elev       0
+src_date       0
+glac_name     12
+glac_stat      0
+geometry       0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygons2</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>anlys_id</th>
+      <th>glac_id</th>
+      <th>anlys_time</th>
+      <th>area</th>
+      <th>db_area</th>
+      <th>width</th>
+      <th>length</th>
+      <th>primeclass</th>
+      <th>min_elev</th>
+      <th>mean_elev</th>
+      <th>max_elev</th>
+      <th>src_date</th>
+      <th>glac_name</th>
+      <th>glac_stat</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>104310</th>
+      <td>130844.0</td>
+      <td>G072072E36664N</td>
+      <td>2014-04-15T00:00:00</td>
+      <td>0.000</td>
+      <td>0.410174</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5000.0</td>
+      <td>5276.0</td>
+      <td>5641.0</td>
+      <td>2007-08-25T00:00:00</td>
+      <td>None</td>
+      <td>exists</td>
+      <td>POLYGON Z ((72.07615 36.66281 0.00000, 72.0762...</td>
+    </tr>
+    <tr>
+      <th>44949</th>
+      <td>442871.0</td>
+      <td>G077399E43173N</td>
+      <td>2015-07-16T00:00:00</td>
+      <td>0.173</td>
+      <td>0.172757</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3663.0</td>
+      <td>0.0</td>
+      <td>3993.0</td>
+      <td>1999-09-09T00:00:00</td>
+      <td>None</td>
+      <td>exists</td>
+      <td>POLYGON Z ((77.39800 43.17062 0.00000, 77.3979...</td>
+    </tr>
+    <tr>
+      <th>237809</th>
+      <td>299044.0</td>
+      <td>G295993E65654N</td>
+      <td>2014-12-01T00:00:00</td>
+      <td>0.135</td>
+      <td>0.134802</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1999-09-14T00:00:00</td>
+      <td>None</td>
+      <td>exists</td>
+      <td>POLYGON Z ((-64.00870 65.65072 0.00000, -64.00...</td>
+    </tr>
+    <tr>
+      <th>420743</th>
+      <td>541927.0</td>
+      <td>G072090E36385N</td>
+      <td>2018-07-01T00:00:00</td>
+      <td>0.000</td>
+      <td>0.112679</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2002-07-10T00:00:00</td>
+      <td>None</td>
+      <td>exists</td>
+      <td>POLYGON Z ((72.09205 36.38447 0.00000, 72.0915...</td>
+    </tr>
+    <tr>
+      <th>440037</th>
+      <td>620766.0</td>
+      <td>G084602E43675N</td>
+      <td>2018-07-01T00:00:00</td>
+      <td>0.000</td>
+      <td>0.794492</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2002-07-10T00:00:00</td>
+      <td>CN5Y741B0068</td>
+      <td>exists</td>
+      <td>POLYGON Z ((84.59901 43.66686 0.00000, 84.5985...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polygons2.to_csv(&quot;GLIMS_20230716/polygons2.csv&quot;, index=False)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./glims_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="observe.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Observe Datasets</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-non-glacier-columns">Remove Non-Glacier Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-non-glacier-rows">Remove Non-Glacier Rows</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
