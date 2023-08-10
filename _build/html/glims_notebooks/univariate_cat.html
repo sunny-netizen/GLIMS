@@ -1,0 +1,1487 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Understand shape of variables (Univariate) &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'glims_notebooks/univariate_cat';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Continuous - Temporal" href="univariate_cont.html" />
+    <link rel="prev" title="Observe Datasets" href="observe.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="introglims.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="introglims.html">
+                    Introduction: GLIMS EDA
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="observe.html">Observe Datasets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Understand shape of variables (Univariate)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="univariate_cont.html">Continuous - Temporal</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="bivariate.html">Bivariate</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fglims_notebooks/univariate_cat.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/glims_notebooks/univariate_cat.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Understand shape of variables (Univariate)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-ids">Categorical - IDs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-glaciers">Count Glaciers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolve-discrepancies">Resolve Discrepancies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-summary-statistics">Compare Summary Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-analyses">Count Analyses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-non-id">Categorical - Non-ID</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="understand-shape-of-variables-univariate">
+<h1>Understand shape of variables (Univariate)<a class="headerlink" href="#understand-shape-of-variables-univariate" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Check working directory</span>
+<span class="n">current_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current Directory:&quot;</span><span class="p">,</span> <span class="n">current_directory</span><span class="p">)</span>
+
+<span class="c1"># Ask pandas to display all columns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current Directory: /Users/yun/Documents/GLIMS/glims_notebooks
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Esri shapefiles as geopandas dataframes</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;GLIMS_20230716/glims_download_13173/glims_points.shp&quot;</span><span class="p">)</span>
+<span class="n">polygons</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;GLIMS_20230716/glims_download_13173/glims_polygons.shp&quot;</span><span class="p">)</span>
+<span class="c1">#polygons2 = gpd.read_file(&quot;GLIMS_20230716/polygons2.csv&quot;)</span>
+
+<span class="c1"># Load the world countries data from the Natural Earth dataset</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change to datetime</span>
+<span class="n">polygons</span><span class="p">[[</span><span class="s1">&#39;anlys_time&#39;</span><span class="p">,</span> <span class="s1">&#39;src_date&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">polygons</span><span class="p">[[</span><span class="s1">&#39;anlys_time&#39;</span><span class="p">,</span> <span class="s1">&#39;src_date&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">)</span>
+
+<span class="c1"># Remove submission-related columns</span>
+<span class="n">polygons1</span> <span class="o">=</span> <span class="n">polygons</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;rec_status&#39;</span><span class="p">,</span> <span class="s1">&#39;wgms_id&#39;</span><span class="p">,</span> <span class="s1">&#39;local_id&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;subm_id&#39;</span><span class="p">,</span> <span class="s1">&#39;release_dt&#39;</span><span class="p">,</span> <span class="s1">&#39;proc_desc&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;rc_id&#39;</span><span class="p">,</span> <span class="s1">&#39;geog_area&#39;</span><span class="p">,</span> <span class="s1">&#39;chief_affl&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;loc_unc_x&#39;</span><span class="p">,</span> <span class="s1">&#39;loc_unc_y&#39;</span><span class="p">,</span> <span class="s1">&#39;glob_unc_x&#39;</span><span class="p">,</span> <span class="s1">&#39;glob_unc_y&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;submitters&#39;</span><span class="p">,</span> <span class="s1">&#39;analysts&#39;</span>
+<span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Remove non-glacier entities.</span>
+<span class="n">polygons2</span> <span class="o">=</span> <span class="n">polygons1</span><span class="p">[</span><span class="n">polygons1</span><span class="o">.</span><span class="n">line_type</span><span class="o">==</span><span class="s2">&quot;glac_bound&quot;</span><span class="p">]</span>
+<span class="c1">#polygons2.line_type.value_counts()</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;line_type&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/13/hf_sfnls1lq6kn8vsc92q40h0000gn/T/ipykernel_43908/2515722808.py:16: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  polygons2.drop(&#39;line_type&#39;, axis=1, inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="categorical-ids">
+<h2>Categorical - IDs<a class="headerlink" href="#categorical-ids" title="Permalink to this heading">#</a></h2>
+<section id="count-glaciers">
+<h3>Count Glaciers<a class="headerlink" href="#count-glaciers" title="Permalink to this heading">#</a></h3>
+<p>Verify how many glaciers there are, evaluating the integrity of ID categories.</p>
+<p>The points data provides an expected count.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Basic Statistic</p></th>
+<th class="head"><p>Points Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Number of glaciers</p></td>
+<td><p>328116 (glacial_id)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify that each point feature represents a unique glacier</span>
+
+<span class="c1"># Number of points entries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Unique points IDs</span>
+<span class="n">points</span><span class="o">.</span><span class="n">glacier_id</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>328116
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>328116
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the glacial-subsetted polygons data,</p>
+<ul class="simple">
+<li><p>Relatively few glaciers have names; this category may be trivial for now.</p></li>
+<li><p>polygons glac_id &lt; points glacial_id. Perhaps some points were lost when subsetting glacial entities.</p></li>
+<li><p>glac_id &lt;&lt; (geometries &lt; anlyt_id &lt; row entries). Perhaps many glaciers are analyzed more than once. Perhaps new analyses often but not always produce new geometries, reflecting changes in glacier size. Perhaps some glaciers are represented by more than one polygon.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Basic Statistic</p></th>
+<th class="head"><p>Points Data</p></th>
+<th class="head"><p>Glacial Polygons Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Number of glaciers</p></td>
+<td><p>328116 (glacial_id)</p></td>
+<td><p>328112 (glac_id)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of glacier analyses (snapshots)</p></td>
+<td><p>-</p></td>
+<td><p>565887 (anlys_id)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Row entries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">polygons2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Unique ids</span>
+<span class="n">polygons2</span><span class="p">[[</span><span class="s1">&#39;anlys_id&#39;</span><span class="p">,</span> <span class="s1">&#39;glac_id&#39;</span><span class="p">,</span> <span class="s1">&#39;glac_name&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>564112
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anlys_id     557878
+glac_id      328112
+glac_name     35111
+geometry     528652
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, in the non-subsetted polygons data including non-glacial entities, the number of unique glac_id is even closer to the expected glacier count.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Basic Statistic</p></th>
+<th class="head"><p>Points Data</p></th>
+<th class="head"><p>Polygons Data</p></th>
+<th class="head"><p>Glacial Polygons Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Number of glaciers</p></td>
+<td><p>328116 (glacial_id)</p></td>
+<td><p>328115 (glac_id)</p></td>
+<td><p>328112 (glac_id)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of glacier analyses (snapshots)</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>565887 (anlys_id)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Row entries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">polygons</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">polygons</span><span class="p">[[</span><span class="s1">&#39;anlys_id&#39;</span><span class="p">,</span> <span class="s1">&#39;glac_id&#39;</span><span class="p">,</span> <span class="s1">&#39;glac_name&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>565887
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anlys_id     557884
+glac_id      328115
+glac_name     35112
+geometry     530099
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resolve-discrepancies">
+<h3>Resolve Discrepancies<a class="headerlink" href="#resolve-discrepancies" title="Permalink to this heading">#</a></h3>
+<p>Further inspection identifies the discrepancies of glaciers without polygons, missing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># points data entries not in polygons2 data</span>
+<span class="n">unaccounted2</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="o">~</span><span class="n">points</span><span class="p">[</span><span class="s1">&#39;glacier_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">polygons2</span><span class="p">[</span><span class="s1">&#39;glac_id&#39;</span><span class="p">])]</span>
+
+<span class="c1"># map points data entries not in polygons2 data</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">);</span>
+<span class="n">unaccounted2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">);</span>
+
+<span class="n">unaccounted2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>glacier_id</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14810</th>
+      <td>G013275E47098N</td>
+      <td>POINT Z (13.27500 47.09800 0.00000)</td>
+    </tr>
+    <tr>
+      <th>150588</th>
+      <td>G087657E50098N</td>
+      <td>POINT Z (87.65700 50.09800 0.00000)</td>
+    </tr>
+    <tr>
+      <th>258013</th>
+      <td>G286571E47471S</td>
+      <td>POINT Z (-73.42900 -47.47100 0.00000)</td>
+    </tr>
+    <tr>
+      <th>259079</th>
+      <td>G286669E47411S</td>
+      <td>POINT Z (-73.33100 -47.41100 0.00000)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/97bbbd89c71a59b39429fc88972fdc9850fda6c19298c3d3b1efbb7e699e9cba.png" src="../_images/97bbbd89c71a59b39429fc88972fdc9850fda6c19298c3d3b1efbb7e699e9cba.png" />
+</div>
+</div>
+<p>Here is the only glacier with a representative point but no polygon features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># points data entries not in polygons data</span>
+<span class="n">unaccounted</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="o">~</span><span class="n">points</span><span class="p">[</span><span class="s1">&#39;glacier_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">polygons</span><span class="p">[</span><span class="s1">&#39;glac_id&#39;</span><span class="p">])]</span>
+
+<span class="c1"># map points data entries not in polygons data</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">);</span>
+<span class="n">unaccounted</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">);</span>
+
+<span class="n">unaccounted</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>glacier_id</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>150588</th>
+      <td>G087657E50098N</td>
+      <td>POINT Z (87.65700 50.09800 0.00000)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../_images/5f12ac8cd1865e4606849cf440bd4eedefe8d316c52cc384294394eee9f6feba.png" src="../_images/5f12ac8cd1865e4606849cf440bd4eedefe8d316c52cc384294394eee9f6feba.png" />
+</div>
+</div>
+<p>And here are the glaciers without glacial polygons, only nunatek polygons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># glac_id that were lost in the subsetting</span>
+<span class="n">unnacounted21</span> <span class="o">=</span> <span class="n">polygons</span><span class="p">[</span><span class="n">polygons</span><span class="o">.</span><span class="n">glac_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unaccounted2</span><span class="o">.</span><span class="n">glacier_id</span><span class="p">)]</span>
+<span class="n">unnacounted21</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>line_type</th>
+      <th>anlys_id</th>
+      <th>glac_id</th>
+      <th>anlys_time</th>
+      <th>area</th>
+      <th>db_area</th>
+      <th>width</th>
+      <th>length</th>
+      <th>primeclass</th>
+      <th>min_elev</th>
+      <th>mean_elev</th>
+      <th>max_elev</th>
+      <th>src_date</th>
+      <th>rec_status</th>
+      <th>glac_name</th>
+      <th>wgms_id</th>
+      <th>local_id</th>
+      <th>glac_stat</th>
+      <th>subm_id</th>
+      <th>release_dt</th>
+      <th>proc_desc</th>
+      <th>rc_id</th>
+      <th>geog_area</th>
+      <th>chief_affl</th>
+      <th>loc_unc_x</th>
+      <th>loc_unc_y</th>
+      <th>glob_unc_x</th>
+      <th>glob_unc_y</th>
+      <th>submitters</th>
+      <th>analysts</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>279735</th>
+      <td>intrnl_rock</td>
+      <td>346955.0</td>
+      <td>G013275E47098N</td>
+      <td>2012-06-30 00:00:00</td>
+      <td>0.00</td>
+      <td>0.098722</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2012-06-30</td>
+      <td>okay</td>
+      <td>Gstss Kees E,</td>
+      <td>None</td>
+      <td>None</td>
+      <td>exists</td>
+      <td>603.0</td>
+      <td>2016-03-07T09:00:00</td>
+      <td>Where no lidar data were available,the GI 2 gl...</td>
+      <td>34.0</td>
+      <td>Austrian Alps</td>
+      <td>Universitaet Innsbruck</td>
+      <td>50</td>
+      <td>50</td>
+      <td>30</td>
+      <td>30</td>
+      <td>Fischer, Andrea</td>
+      <td>Fischer, Andrea</td>
+      <td>POLYGON Z ((13.28654 47.09805 0.00000, 13.2865...</td>
+    </tr>
+    <tr>
+      <th>351409</th>
+      <td>intrnl_rock</td>
+      <td>2152.0</td>
+      <td>G286571E47471S</td>
+      <td>2005-07-14 23:33:02</td>
+      <td>1.29</td>
+      <td>1.273130</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2001-03-11</td>
+      <td>okay</td>
+      <td>None</td>
+      <td>50</td>
+      <td>NPI-50</td>
+      <td>None</td>
+      <td>100.0</td>
+      <td>2005-12-20T19:43:58</td>
+      <td>Manually digitised; A manually-based procedure...</td>
+      <td>20.0</td>
+      <td>Chilean glaciers, between -18 and -56 degrees ...</td>
+      <td>Universidad de Chile</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Bown, Francisca</td>
+      <td>Rivera, Andres</td>
+      <td>POLYGON Z ((-73.42454 -47.46965 0.00000, -73.4...</td>
+    </tr>
+    <tr>
+      <th>353371</th>
+      <td>intrnl_rock</td>
+      <td>2154.0</td>
+      <td>G286669E47411S</td>
+      <td>2005-07-14 23:33:02</td>
+      <td>1.00</td>
+      <td>0.999455</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2001-03-11</td>
+      <td>okay</td>
+      <td>None</td>
+      <td>55</td>
+      <td>NPI-55</td>
+      <td>None</td>
+      <td>100.0</td>
+      <td>2005-12-20T19:43:58</td>
+      <td>Manually digitised; A manually-based procedure...</td>
+      <td>20.0</td>
+      <td>Chilean glaciers, between -18 and -56 degrees ...</td>
+      <td>Universidad de Chile</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Bown, Francisca</td>
+      <td>Rivera, Andres</td>
+      <td>POLYGON Z ((-73.33914 -47.41311 0.00000, -73.3...</td>
+    </tr>
+    <tr>
+      <th>353372</th>
+      <td>intrnl_rock</td>
+      <td>2154.0</td>
+      <td>G286669E47411S</td>
+      <td>2005-07-14 23:33:02</td>
+      <td>1.00</td>
+      <td>0.999455</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2001-03-11</td>
+      <td>okay</td>
+      <td>None</td>
+      <td>55</td>
+      <td>NPI-55</td>
+      <td>None</td>
+      <td>100.0</td>
+      <td>2005-12-20T19:43:58</td>
+      <td>Manually digitised; A manually-based procedure...</td>
+      <td>20.0</td>
+      <td>Chilean glaciers, between -18 and -56 degrees ...</td>
+      <td>Universidad de Chile</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Bown, Francisca</td>
+      <td>Rivera, Andres</td>
+      <td>POLYGON Z ((-73.33764 -47.41012 0.00000, -73.3...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Considering these glaciers to have existed at least at some point, the points data provides the most complete count of glaciers.</p>
+</section>
+<section id="compare-summary-statistics">
+<h3>Compare Summary Statistics<a class="headerlink" href="#compare-summary-statistics" title="Permalink to this heading">#</a></h3>
+<p>These counts can be compared with the GLIMS <a class="reference external" href="http://glims.colorado.edu/glacierdata/db_summary_stats.php">Summary Statistics</a> page (unknown date of last update, accessed Aug 3, 2023).</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Basic Statistic</p></th>
+<th class="head"><p>EDA Counts</p></th>
+<th class="head"><p>Summary Statistics Report</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Number of glaciers</p></td>
+<td><p>328116 (points glacial_id)</p></td>
+<td><p>444740 (200,000)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of glacier analyses (snapshots)</p></td>
+<td><p>565887 (polygons anlys_id)</p></td>
+<td><p>699217</p></td>
+</tr>
+</tbody>
+</table>
+<p>The page notes that some glaciers were double-counted by having multiple glacier ID, that this problem would eventually be fixed, and that 200,000 was a reasonable estimate for the number of glaciers on earth. This may explain why the counts of this EDA are lower, if its data is more recent.</p>
+</section>
+<section id="count-analyses">
+<h3>Count Analyses<a class="headerlink" href="#count-analyses" title="Permalink to this heading">#</a></h3>
+<p>The page also states that 173148 glaciers have multi-temporal coverage. This means many glaciers were analyzed more than once, an explanation for glac_id &lt;&lt; (geometries &lt; anlyt_id &lt; row entries). To demonstrate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EDA</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">565887</span> <span class="o">-</span> <span class="mi">173148</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u2248</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">328116</span><span class="p">)</span>
+
+<span class="c1"># GLIMS Summary Statistics Report</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">699217</span> <span class="o">-</span> <span class="mi">173148</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u2248</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">565887</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>392739 ≈ 328116
+526069 ≈ 565887
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See some recurring glacier ids</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">glac_id</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G302228E64270S    75
+G299054E63854S    33
+G068799E49603S    29
+G008010E46588N    22
+G011972E47060N    21
+                  ..
+G285246E81397N     1
+G286657E80112N     1
+G280384E81976N     1
+G288449E80529N     1
+G278941E82406N     1
+Name: glac_id, Length: 328112, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Investigate one of the recurring glacier ids.</span>
+<span class="c1"># Each of its rows are unique - in which fields do they differ?</span>
+<span class="n">G011972E47060N</span> <span class="o">=</span> <span class="n">polygons2</span><span class="p">[</span><span class="n">polygons2</span><span class="o">.</span><span class="n">glac_id</span><span class="o">==</span><span class="s2">&quot;G011972E47060N&quot;</span><span class="p">]</span>
+<span class="n">G011972E47060N</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>264610    False
+277696    False
+278454    False
+278455    False
+278456    False
+278457    False
+278458    False
+278459    False
+278460    False
+280076    False
+280077    False
+280078    False
+280079    False
+280080    False
+280081    False
+280082    False
+329749    False
+380530    False
+556594    False
+556595    False
+556596    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In which fields do they differ?</span>
+<span class="c1"># Some have different anlys_id and anlys_time entries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G011972E47060N</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">G011972E47060N</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(21, 15)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>anlys_id</th>
+      <th>glac_id</th>
+      <th>anlys_time</th>
+      <th>area</th>
+      <th>db_area</th>
+      <th>width</th>
+      <th>length</th>
+      <th>primeclass</th>
+      <th>min_elev</th>
+      <th>mean_elev</th>
+      <th>max_elev</th>
+      <th>src_date</th>
+      <th>glac_name</th>
+      <th>glac_stat</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>264610</th>
+      <td>335334.0</td>
+      <td>G011972E47060N</td>
+      <td>2010-06-01</td>
+      <td>0.013</td>
+      <td>0.012598</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3033.0</td>
+      <td>3081.0</td>
+      <td>3123.0</td>
+      <td>2003-08-24</td>
+      <td>NN,</td>
+      <td>exists</td>
+      <td>POLYGON Z ((11.97214 47.05956 0.00000, 11.9717...</td>
+    </tr>
+    <tr>
+      <th>277696</th>
+      <td>344815.0</td>
+      <td>G011972E47060N</td>
+      <td>2007-01-01</td>
+      <td>0.000</td>
+      <td>0.448882</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1969-06-30</td>
+      <td>NN,</td>
+      <td>exists</td>
+      <td>POLYGON Z ((11.97374 47.05906 0.00000, 11.9736...</td>
+    </tr>
+    <tr>
+      <th>278454</th>
+      <td>345686.0</td>
+      <td>G011972E47060N</td>
+      <td>2007-06-30</td>
+      <td>0.000</td>
+      <td>0.234913</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1998-06-30</td>
+      <td>NN,</td>
+      <td>exists</td>
+      <td>POLYGON Z ((11.97078 47.06422 0.00000, 11.9705...</td>
+    </tr>
+    <tr>
+      <th>278455</th>
+      <td>345686.0</td>
+      <td>G011972E47060N</td>
+      <td>2007-06-30</td>
+      <td>0.000</td>
+      <td>0.234913</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1998-06-30</td>
+      <td>NN,</td>
+      <td>exists</td>
+      <td>POLYGON Z ((11.97299 47.05911 0.00000, 11.9730...</td>
+    </tr>
+    <tr>
+      <th>278456</th>
+      <td>345686.0</td>
+      <td>G011972E47060N</td>
+      <td>2007-06-30</td>
+      <td>0.000</td>
+      <td>0.234913</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1998-06-30</td>
+      <td>NN,</td>
+      <td>exists</td>
+      <td>POLYGON Z ((11.97062 47.06688 0.00000, 11.9706...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Map examples of glacier size changes/stability across analyses</span>
+<span class="c1"># This would be great for a time series</span>
+<span class="n">G011972E47060N</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;anlys_time&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e141cc9c5ab311c87b2339766939e6216d96a3ce565aa70ebbf47d32bc72d31b.png" src="../_images/e141cc9c5ab311c87b2339766939e6216d96a3ce565aa70ebbf47d32bc72d31b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The rest have differing geometry</span>
+<span class="n">G011972E47060N</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">G011972E47060N</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anlys_id       True
+glac_id        True
+anlys_time     True
+area           True
+db_area        True
+width          True
+length         True
+primeclass     True
+min_elev       True
+mean_elev      True
+max_elev       True
+src_date       True
+glac_name      True
+glac_stat      True
+geometry      False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apparently these disconnected polygons belong to the same glacier ID</span>
+<span class="n">G011972E47060Nab</span><span class="o">=</span><span class="n">G011972E47060N</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="c1"># Map example of glacier having &gt;1 glacial polygons. </span>
+<span class="n">G011972E47060Nab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Paired&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/62a6217fd65c5cf2b8b49a318201a05b22dd608357272e1d5277b713e8f64c67.png" src="../_images/62a6217fd65c5cf2b8b49a318201a05b22dd608357272e1d5277b713e8f64c67.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="categorical-non-id">
+<h2>Categorical - Non-ID<a class="headerlink" href="#categorical-non-id" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A few hundred glaciers are gone; None means data NA</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">polygons2</span><span class="o">.</span><span class="n">glac_stat</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">polygons2</span><span class="o">.</span><span class="n">glac_stat</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">);</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">glac_stat</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exists    558897
+None        4906
+gone         309
+Name: glac_stat, dtype: int64
+</pre></div>
+</div>
+<img alt="../_images/b91ea45c6755eaa838e217e77ddde0daea9c43f64e7bcc53da7b77f81659d99c.png" src="../_images/b91ea45c6755eaa838e217e77ddde0daea9c43f64e7bcc53da7b77f81659d99c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perhaps number of gone glaciers consistent with number of zero area glaciers (db_area)</span>
+<span class="c1"># Are the &quot;zero area&quot; glaciers also &quot;gone&quot;?</span>
+<span class="n">dimensions</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Perhaps number of gone glaciers consistent with number of zero area glaciers (db_area)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Are the &quot;zero area&quot; glaciers also &quot;gone&quot;?</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">dimensions</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;dimensions&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert primeclass variable to integer datatype instead of float</span>
+<span class="n">polygons2</span><span class="p">[</span><span class="s1">&#39;primeclass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">polygons2</span><span class="p">[</span><span class="s1">&#39;primeclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/geopandas/geodataframe.py:1472: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 95% of polygons are in the other category. Could be an issue of missing data.</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">primeclass</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     0.952410
+9     0.014449
+7     0.013435
+6     0.012127
+5     0.003301
+4     0.002597
+3     0.001057
+10    0.000363
+2     0.000259
+8     0.000002
+Name: primeclass, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graphing</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">polygons2</span><span class="o">.</span><span class="n">primeclass</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">polygons2</span><span class="o">.</span><span class="n">primeclass</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">);</span>
+<span class="n">polygons2</span><span class="o">.</span><span class="n">primeclass</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     537266
+9       8151
+7       7579
+6       6841
+5       1862
+4       1465
+3        596
+10       205
+2        146
+8          1
+Name: primeclass, dtype: int64
+</pre></div>
+</div>
+<img alt="../_images/f9a11e613a61a89130de9f78ad3ae53f390a12fdc8acb0927f76ed038dedef38.png" src="../_images/f9a11e613a61a89130de9f78ad3ae53f390a12fdc8acb0927f76ed038dedef38.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Investigate the other 5% -- they come from many providers, especially IANIGLA in Argentina</span>
+<span class="n">polygons</span><span class="p">[</span><span class="n">polygons</span><span class="o">.</span><span class="n">primeclass</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">chief_affl</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IANIGLA                                                              0.710136
+International Centre for Integrated Mountain Development (ICIMOD)    0.120268
+Durham University                                                    0.048995
+University of Alberta                                                0.038005
+University of Colorado                                               0.021537
+Texas A and M University                                             0.015172
+Royal Holloway University                                            0.010880
+Russian Academy of Sciences                                          0.008955
+Centro de Estudios Avanzados en Zonas Aridas (CEAZA)                 0.005773
+OMP-LEGOS                                                            0.005588
+Geographical Institute                                               0.003886
+Universidade Federal do Rio Grande - FURG                            0.003627
+RWTH Aachen University                                               0.002960
+University of Maine                                                  0.001702
+Universidad de Chile                                                 0.001443
+National Energy Authority                                            0.000814
+Texas A &amp; M University                                               0.000222
+University of Lethbridge                                             0.000037
+Name: chief_affl, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">);</span>
+<span class="n">polygons</span><span class="p">[</span><span class="n">polygons</span><span class="o">.</span><span class="n">primeclass</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;primeclass&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1ce3067c88e2e236cca0a65f5c6975b4d0ca4e82a75c8c637834c4f7e9e047df.png" src="../_images/1ce3067c88e2e236cca0a65f5c6975b4d0ca4e82a75c8c637834c4f7e9e047df.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://wgms.ch/data_submission/</span>
+<span class="c1"># https://wgms.ch/downloads/FoG_Submission_instructions.pdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./glims_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="observe.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Observe Datasets</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="univariate_cont.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Continuous - Temporal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-ids">Categorical - IDs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-glaciers">Count Glaciers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolve-discrepancies">Resolve Discrepancies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-summary-statistics">Compare Summary Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-analyses">Count Analyses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-non-id">Categorical - Non-ID</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
