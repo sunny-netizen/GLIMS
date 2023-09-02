@@ -5,7 +5,7 @@ format: jb-book
 root: glims_notebooks/introglims
 chapters:
 - file: glims_notebooks/observe
-- file: glims_notebooks/organize
-- file: glims_notebooks/univariate_cat
-- file: glims_notebooks/univariate_cont
-- file: glims_notebooks/bivariate
+- file: glims_notebooks/clean
+- file: glims_notebooks/categorical
+- file: glims_notebooks/continuous
+- file: glims_notebooks/multitemporal
